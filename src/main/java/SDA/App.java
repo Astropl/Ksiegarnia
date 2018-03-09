@@ -4,11 +4,15 @@ package SDA;
 import java.io.IOException;
 import java.util.Scanner;
 
+//import static SDA.SaveBookList.wczytane;
+
 public class App {
     static BookService bookService = new BookService();
+    static SaveBookList saveBookList = new SaveBookList();
     static Menu menu = new Menu();
     static Scanner sc = new Scanner(System.in);
     static int choice;
+    static String wczytane;
 
     public static void main(String[] args) throws IOException {
 
@@ -61,7 +65,8 @@ public class App {
 //    }
 
 
-    public static void showBook() {
+    public static void showBook() throws IOException {
+        saveBookList.loadFile();
         for (int i = 0; i < BookService.bookslist.size(); i++) {
             System.out.println(bookService.bookslist.get(i));
         }

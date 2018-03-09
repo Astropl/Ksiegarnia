@@ -15,7 +15,7 @@ int id, numberOfItemsInStock;
         String TitleOFBook, author;
         double price;*/
 public class BookService {
-    public static List <Book> bookslist = new ArrayList <Book>();
+    public static List bookslist = new ArrayList <>();
     static Scanner sc = new Scanner(System.in);
     static Scanner sc1 = new Scanner((System.in));
     static SaveBookList saveBookList= new SaveBookList();;

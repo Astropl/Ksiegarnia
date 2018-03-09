@@ -7,21 +7,21 @@ import java.util.List;
 import static java.lang.System.lineSeparator;
 
 public class SaveBookList {
-    private static  String wczytane;
-    private static  BookService bookService;
+    private static String wczytane;
+    private static BookService bookService= new BookService();
     static String filePatch = "C:\\Users\\Astro\\IdeaProjects\\Księgarnia\\resources\\resources.txt";
     File file = new File(filePatch);
     FileWriter fileWriter = null;
     BufferedReader fileReader = null;
-    List <Book> tempBooks = new ArrayList <Book>();
-    String tablicaStringow []  =new tablicaStringow[10];
+    public static List <Book> bookslist = new ArrayList <Book>();
+    //String tablicaStringow []  =new tablicaStringow[10];
     //BookService bookService = new BookService();
     //String wczytane;
 
     public void SaveBookList() throws IOException {
-        loadFile(wczytane);
+        loadFile();
         //bookService.bookslist.clear();
-
+        System.out.println("Wczytałem" +wczytane);
         saveFile();
 
 
@@ -45,7 +45,11 @@ public class SaveBookList {
 
             fileWriter = new FileWriter(filePatch);
             for (int i = 0; i < bookService.bookslist.size(); i++) {
-                tablicaStringow= String[].valueOf( bookService.bookslist.get(i));
+                //tablicaStringow= String[].valueOf( bookService.bookslist.get(i));
+                String temp = new String(String.valueOf(bookService.bookslist.get(i)));
+                System.out.println("Zapisałem " + temp);
+
+
 
                 fileWriter.write(new String(String.valueOf(bookService.bookslist.get(i))));
                 fileWriter.write(lineSeparator());
@@ -59,12 +63,21 @@ public class SaveBookList {
         }
     }
 
-    public void loadFile(String wczytane) throws IOException {
+    public void loadFile() throws IOException {
 
         try {
             fileReader = new BufferedReader(new FileReader(filePatch));
             String someFromeLine = fileReader.readLine();
-            this.wczytane = (someFromeLine);
+           //for (int i =0;i<1;i++) {
+               this.wczytane = (someFromeLine);
+               //wczytane = new wczytane();
+               System.out.println("wczytane :"+wczytane);
+               bookService.bookslist.add(wczytane) ;
+               //bookService.bookslist.add(someFromeLine);
+
+               //bookslist.add(String.valueOf(wczytane));
+               //tempBooks.add(wczytane);
+           //}
         } finally {
             if (fileReader != null) {
                 fileReader.close();
