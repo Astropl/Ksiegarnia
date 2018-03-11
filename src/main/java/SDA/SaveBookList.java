@@ -65,6 +65,7 @@ public class SaveBookList {
             fileReader = new BufferedReader(new FileReader(filePatch));
             String someFromeLine = fileReader.readLine();
             this.wczytane = (someFromeLine);
+            // Zesplitowac zmienna string wczytane
         } finally {
             if (fileReader != null) {
                 fileReader.close();
