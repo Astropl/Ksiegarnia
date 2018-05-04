@@ -7,7 +7,16 @@ import java.util.Scanner;
 //import static SDA.SaveBookList.wczytane;
 
 public class App {
-    static BookService bookService = new BookService();
+    static BookService bookService;
+
+//    static {
+//        try {
+//            bookService = new BookService();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
     static SaveBookList saveBookList = new SaveBookList();
     static Menu menu = new Menu();
     static Scanner sc = new Scanner(System.in);
@@ -15,7 +24,9 @@ public class App {
     static String wczytane;
 
     public static void main(String[] args) throws IOException {
-
+        //*********************
+        System.out.println("2"+saveBookList.bookslist);
+        //*********************
         choiceMenu();
         //showBook();
 
@@ -67,9 +78,10 @@ public class App {
 
     public static void showBook() throws IOException {
         saveBookList.loadFile();
-        for (int i = 0; i < BookService.bookslist.size(); i++) {
-            System.out.println(bookService.bookslist.get(i));
-        }
+        System.out.println(bookService.bookslist);
+//        for (int i = 0; i < BookService.bookslist.size(); i++) {
+//            System.out.println(bookService.bookslist.get(i));
+//        }
     }
 }
 //Firma SDA prowadzi księgarnię internetową. Zostałeś(aś) poproszony o dodanie

@@ -18,11 +18,7 @@ public class BookService {
     public static List bookslist = new ArrayList <>();
     static Scanner sc = new Scanner(System.in);
     static Scanner sc1 = new Scanner((System.in));
-    static SaveBookList saveBookList= new SaveBookList();;
-
-    //static SaveBookList saveBookList
-
-
+    private static SaveBookList saveBookList= new SaveBookList();;
     private static String titleOFBook;
     private static String author;
     private static int id;
@@ -30,9 +26,13 @@ public class BookService {
     private static double price;
     static Book book = new Book(id, titleOFBook, author, price, numberOfItemsInStock);
 
-    public BookService() {
-        Book book1 = new Book(1, "Cos", "King", 25, 0);
-        bookslist.add(book1);
+    public BookService() throws IOException {
+        saveBookList.loadFile();
+       // Book book1 = new Book(1, "Cos", "King", 25, 0);
+        //bookslist.add(book1);
+        //*********************
+        System.out.println("1"+bookslist);
+        //*********************
 
     }
 
@@ -57,14 +57,6 @@ public class BookService {
 
 
 
-//    public void addBooks(int id, String titleOFBook, String author, double price, int numberOfItemsInStock) {
-//        BookService bookService = new BookService();
-//        Book book1 = new Book();
-//        book1 = ("1", "asa", "sff", "34", "0");
-//        bookslist.add(book1);
-//
-//        return;
-//    }
 
 
 }

@@ -8,12 +8,28 @@ import static java.lang.System.lineSeparator;
 
 public class SaveBookList {
     private static String wczytane;
-    private static BookService bookService= new BookService();
+    private static BookService bookService;
+//todo: jak na razie nie nadpisuje  pliku tylko kasuje wewnatrz i zapisuje nowa
+
+//    FileWriter file = new FileWriter("plik.txt", true);
+//  BufferedWriter out = new BufferedWriter(file);
+//  out.write("Dodaje do pliku");
+//  out.close();
+//
+// static {
+//        try {
+//            bookService = new BookService();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+
     static String filePatch = "C:\\Users\\Astro\\IdeaProjects\\Księgarnia\\resources\\resources.txt";
     File file = new File(filePatch);
     FileWriter fileWriter = null;
     BufferedReader fileReader = null;
     public static List <Book> bookslist = new ArrayList <Book>();
+    //private File filePath;
     //String tablicaStringow []  =new tablicaStringow[10];
     //BookService bookService = new BookService();
     //String wczytane;
@@ -43,17 +59,17 @@ public class SaveBookList {
 //wynik2 = tekst.split(":", 2);
 
 
-            fileWriter = new FileWriter(filePatch);
-            for (int i = 0; i < bookService.bookslist.size(); i++) {
+            fileWriter = new FileWriter(filePatch,true);
+            //for (int i = 0; i < bookService.bookslist.size(); i++) {
                 //tablicaStringow= String[].valueOf( bookService.bookslist.get(i));
-                String temp = new String(String.valueOf(bookService.bookslist.get(i)));
+                String temp = new String(String.valueOf(bookService.bookslist));
                 System.out.println("Zapisałem " + temp);
 
 
 
-                fileWriter.write(new String(String.valueOf(bookService.bookslist.get(i))));
+                fileWriter.write(new String(String.valueOf(bookService.bookslist)));
                 fileWriter.write(lineSeparator());
-            }
+
 
 
         } finally {
@@ -66,26 +82,50 @@ public class SaveBookList {
     public void loadFile() throws IOException {
 
         try {
-            fileReader = new BufferedReader(new FileReader(filePatch));
-            String someFromeLine = fileReader.readLine();
-           //for (int i =0;i<1;i++) {
-               this.wczytane = (someFromeLine);
-               //wczytane = new wczytane();
-               System.out.println("wczytane :"+wczytane);
-               bookService.bookslist.add(wczytane) ;
-               //bookService.bookslist.add(someFromeLine);
-
-               //bookslist.add(String.valueOf(wczytane));
-               //tempBooks.add(wczytane);
-           //}
-        } finally {
-            if (fileReader != null) {
-                fileReader.close();
-            }
+       BufferedReader lineReader = new BufferedReader(new FileReader(filePatch));
+        String lineText = null;
+wczytane = lineText;
+        while ((wczytane = lineReader.readLine()) != null) {
+            System.out.println(wczytane);
         }
+
+        lineReader.close();
+    } catch (IOException ex) {
+       System.err.println(ex);
+    }
+//        try {
+//            fileReader = new BufferedReader(new FileReader(filePatch));
+//            String someFromeLine = fileReader.readLine();
+//            this.wczytane = (someFromeLine);
+//            //System.out.println("wczytane :"+wczytane);
+//               bookService.bookslist.add(wczytane) ;
+//               } finally {
+//            if (fileReader != null) {
+//                fileReader.close();
+//            }
+
 
         return;
     }
+//
+//
+//try {
+//        BufferedReader lineReader = new BufferedReader(new FileReader(filePath));
+//        String lineText = null;
+//
+//        while ((lineText = lineReader.readLine()) != null) {
+//            System.out.println(lineText);
+//        }
+//
+//        lineReader.close();
+//    } catch (IOException ex) {
+//        System.err.println(ex);
+//    }
+
+
+
+
+    //*********************************
 //for (int i = 0; i < bookService.bookslist.size(); i++) {
 //            System.out.println(bookService.bookslist.get(i));
 //        }

@@ -54,17 +54,7 @@ public class Book {
         this.price = price;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Book{" +
-//                "id=" + id +
-//                ", TitleOFBook='" + TitleOFBook + '\'' +
-//                ", author='" + author + '\'' +
-//                ", price=" + price +
-//                ", numberOfItemsInStock=" + numberOfI1temsInStock +
-//                '}';
-//    }
-    @Override
+
     public String toString() {
         return id+","+ TitleOFBook +","+ author +","+price +","+ numberOfItemsInStock ;
     }
